@@ -15,7 +15,7 @@
 
 
 - ### Electronic Medical Record (EMR)
+  - The EMR data has not been disclosed due to security reasons.
+  <img width="812" alt="image" src="https://github.com/user-attachments/assets/3da8baa5-37d9-43bc-9361-4b10b962b476">
 
-<img width="812" alt="image" src="https://github.com/user-attachments/assets/3da8baa5-37d9-43bc-9361-4b10b962b476">
-
-*Table 4. EMR data affecting blood glucose in type 2 diabetes patients*
+  *Table 4. EMR data affecting blood glucose in type 2 diabetes patients*
