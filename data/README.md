@@ -15,6 +15,10 @@
 
   *Fig4. Visualization of glucose, insulin administration, and meal time values through CGM devices*
 
+  ##### pre-processing
+    - Preprocessing was performed by collecting data using a 35-minute input window followed by a 30-minute delay to predict future values.
+  <img width="400" alt="image" src="https://github.com/user-attachments/assets/198cb942-aaff-44b6-bb19-12750782d218">
+
 
 - ### Electronic Medical Record (EMR)
   - The EMR data has not been disclosed due to security reasons.
