@@ -21,6 +21,16 @@
 
 
 - ### Electronic Medical Record (EMR)
+
+  - EMR Data example
+  
+| 나이 | BMI     | 당뇨 유병기간 | BUN  | Creatinine | CRP    | C-peptide | HbA1c | Fructosamine | Urine Albumin/Creatinine ratio | file_name |
+|------|---------|---------------|------|------------|--------|-----------|-------|--------------|---------------------------------|-----------|
+| 64   | 20.8117 | 20.0          | 36.7 | 2.23       | 166.22 | 1.11      | 12.8  | 0            | 0.00                            | S000.xlsx |
+|    |  |          | |       |  |    ...   |   |           |                            |  |
+| 69   | 27.2509 | 25.0          | 43.4 | 7.63       | 134.77 | 0.00      | 5.5   | 0            | 0.00                            | S000.xlsx |
+
+  
   - The EMR data has not been disclosed due to security reasons.
   <img width="812" alt="image" src="https://github.com/user-attachments/assets/3da8baa5-37d9-43bc-9361-4b10b962b476">
 
