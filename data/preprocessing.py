@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import random
 import tensorflow as tf  
+from tensorflow.keras.utils import to_categorical
 
 # Set random seed for reproducibility
 # tf.random.set_seed(42)
@@ -87,3 +88,69 @@ for i in range(len(all_data)):
     arr = np.where(arr == "높음", 400, arr)
     arr = np.where(arr == "낮음", 40, arr)
     all_data[i]['포도당 값 (mg/dL)'] = arr
+
+# 데이터 셔플 및 train/test 분리
+random.shuffle(all_data)  # 환자별 데이터 랜덤 셔플
+
+train_data = all_data[:81]
+test_data = all_data[81:]
+
+# 데이터 준비 함수 정의
+def prepare_data(data):
+    X_data, y_data, EMR_data = [], [], []
+    for patient_data in data:
+        X = patient_data[['포도당 값 (mg/dL)','인슐린 값(u)', '탄수화물 값 (그램)']]
+        y = patient_data['포도당 값 (mg/dL)']
+        EMR_x = patient_data[['나이', 'BMI', '당뇨 유병기간', 'BUN', 'Creatinine', 'CRP', 'C-peptide', 'HbA1c', 'Fructosamine', 'Urine Albumin/Creatinine ratio']]
+        
+        for j in range(len(X) - 13):
+            X_data.append(X.iloc[j:j+7].values.tolist())
+            EMR_data.append(EMR_x.iloc[0].values.tolist())
+        
+        for w in range(len(y) - 13):
+            y_data.append(y.iloc[13 + w])
+    
+    return np.array(X_data), np.array(y_data), np.array(EMR_data)
+
+# Train/Test 데이터 준비
+train_X, train_y, train_EMR = prepare_data(train_data)
+test_X, test_y, test_EMR = prepare_data(test_data)
+
+# 클래스 레이블 생성 함수 정의
+def create_class_labels(y_values):
+    return [1 if y <= 70 else 2 if y >= 180 else 0 for y in y_values]
+
+train_class = create_class_labels(train_y)
+test_class = create_class_labels(test_y)
+
+# 데이터프레임으로 변환
+train_y_df = pd.DataFrame({'포도당 값 (mg/dL)': train_y, 'class': train_class})
+test_y_df = pd.DataFrame({'포도당 값 (mg/dL)': test_y, 'class': test_class})
+
+# NumPy 배열로 변환
+train_y = train_y_df.values
+test_y = test_y_df.values
+
+# 각 변수 분리
+train_y_pred = train_y[:, 0]
+train_y_class = train_y[:, 1]
+test_y_pred = test_y[:, 0]
+test_y_class = test_y[:, 1]
+
+# 원-핫 인코딩
+y_train_class = to_categorical(train_y_class.astype('float32'))
+y_test_class = to_categorical(test_y_class.astype('float32'))
+
+# 데이터셋 모양 출력
+print('train_X shape:', train_X.shape)
+print('test_X shape:', test_X.shape)
+print('train_y_pred shape:', train_y_pred.shape)
+print('train_y_class shape:', train_y_class.shape)
+print('test_y shape:', test_y.shape)
+print('train_EMR shape:', train_EMR.shape)
+print('test_EMR shape:', test_EMR.shape)
+
+# EMR 데이터를 데이터프레임으로 변환
+train_EMR_df = pd.DataFrame(train_EMR, columns=['나이', 'BMI', '당뇨 유병기간', 'BUN', 'Creatinine', 'CRP', 'C-peptide', 'HbA1c', 'Fructosamine', 'Urine Albumin/Creatinine ratio'])
+test_EMR_df = pd.DataFrame(test_EMR, columns=['나이', 'BMI', '당뇨 유병기간', 'BUN', 'Creatinine', 'CRP', 'C-peptide', 'HbA1c', 'Fructosamine', 'Urine Albumin/Creatinine ratio'])
+
