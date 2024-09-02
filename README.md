@@ -3,12 +3,14 @@
 [Kim, Seo-Hee, et al. "Impartial feature selection using multi-agent reinforcement learning for adverse glycemic event prediction." *Computers in Biology and Medicine* 173 (2024): 108257.](https://www.sciencedirect.com/science/article/pii/S001048252400341X?casa_token=hLZXFbOh23cAAAAA:hcaI-JLB53Bpn26rhG8eHdc-xXn7YHzpkYiVDfgf24gAwUl0faagI2Ty1nY2Cp5ufdLYJsYs_nc)
 
 ## Keywords
-- Multi-agent learning
-  
-- Reinforcement learning
+Multi-agent learning; reinforcement learning; Attention mechanism; Feature selection ;Deep learning
 
-- Attention mechanism
+<img src="https://github.com/user-attachments/assets/9653abcf-3c77-483a-8348-29ea2732f2cc" width="500">
+<p>Fig1. Our research framework to predict adverse glycemic events.</p>
 
-- Feature selection
+<img src="https://github.com/user-attachments/assets/306046f7-7525-4b28-b372-daca4eadeb32" width="500">
+<p>Fig2. Actions defined in MARL.</p>
 
-- Deep learning
+<img src="https://github.com/user-attachments/assets/0d275e9c-c0ae-4a0f-92f3-d7b866e98c69" width="500">
+<p>Fig3. Flowchart of multi-agent reinforcement learning</p>
+
