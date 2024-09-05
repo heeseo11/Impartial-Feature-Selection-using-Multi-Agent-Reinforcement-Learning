@@ -14,3 +14,17 @@ Multi-agent learning; reinforcement learning; Attention mechanism; Feature selec
 <img src="https://github.com/user-attachments/assets/0d275e9c-c0ae-4a0f-92f3-d7b866e98c69" width="500">
 <p>Fig3. Flowchart of multi-agent reinforcement learning</p>
 
+## Project Directory Structure
+
+The following is the structure of the project directory:
+
+
+### Files and Their Responsibilities
+
+- **mypackage/**: This folder contains the main modules for data preprocessing, model definition, and reinforcement learning logic.
+  - `data_preprocessing.py`: Contains functions for loading and preprocessing data.
+  - `model.py`: Defines the machine learning models.
+  - `reinforcement_learning.py`: Implements reinforcement learning algorithms and Q-learning logic.
+  
+- **train.py**: This file is used to bring all the components together and run the training process.
+
