@@ -51,7 +51,7 @@ def prepare_data(data):
     
     return np.array(X_data), np.array(y_data), np.array(EMR_data)
 
-# 클래스 레이블 생성
+# Creating Class Labels
 def create_class_labels(y_values):
     return [1 if y <= 70 else 2 if y >= 180 else 0 for y in y_values]
     
