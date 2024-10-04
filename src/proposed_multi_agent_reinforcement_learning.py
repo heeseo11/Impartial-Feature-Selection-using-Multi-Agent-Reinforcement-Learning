@@ -28,7 +28,7 @@ def q_learning(num_episodes, num_agents, Q_values, accuracy_func, train_EMR, tes
         for episode in range(num_episodes):
             print("num_episodes:", episode)
             
-            # 각 에이전트의 행동 선택
+            # Action Selection for Each Agent
             actions = [
                 np.argmax(Q_values[agent]) if random.uniform(0,1) > epsilon else random.choice([0,1]) 
                 for agent in range(num_agents)
@@ -40,10 +40,10 @@ def q_learning(num_episodes, num_agents, Q_values, accuracy_func, train_EMR, tes
             reward_store_array.append(["R", total_features, R])
             all_rewards.append(R)
     
-            # 각 에이전트의 개별 행동 업데이트
+            # Individual Action Update for Each Agent
             for agent in range(num_agents):
                 individual_action = actions[:]
-                individual_action[agent] = 1 - individual_action[agent]  # 반전된 행동
+                individual_action[agent] = 1 - individual_action[agent]  # Generating Reversed Actions
     
                 individual_features = [i for i, act in enumerate(individual_action) if act == 1]
     
@@ -54,7 +54,7 @@ def q_learning(num_episodes, num_agents, Q_values, accuracy_func, train_EMR, tes
                 agent_reward_store_array.append(["A_R", individual_features, R, C_agent])
                 Q_values[agent][actions[agent]] += alpha * (C_agent - Q_values[agent][actions[agent]])
     
-            # 탐색-활용 균형 감소
+            # Reduction of Exploration-Exploitation Balance
             alpha *= alpha_decay_rate
             epsilon *= epsilon_decay_rate
             print("Q_values:", Q_values)
